@@ -5,8 +5,8 @@
   "author": "RBMH",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.prod.conf.js",
-    "build": "node build/build.js"
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.conf.js",
+    "build": "NODE_ENV=production node build/build.js"
   },
   "dependencies": {
     "vue": "^2.5.2"

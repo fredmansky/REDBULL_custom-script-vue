@@ -6,8 +6,7 @@ const config = require('../config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const vueLoaderConfig = require('./vue-loader.conf');
 
-const env = require('../config/prod.env');
-
+const env = process.env.NODE_ENV || 'development';
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -61,7 +60,7 @@ const webpackConfig = {
     library: 'customScript',
     libraryTarget: 'amd',
     path: config.build.assetsRoot,
-    filename: process.env.NODE_ENV === 'production' ? '[name].[chunkhash].js' : 'main.js'
+    filename: process.env.NODE_ENV === 'production' ? '[name].[chunkhash].js' : 'bundle.js'
   },
   devServer: {
     contentBase: config.build.assetsRoot,
@@ -93,8 +92,15 @@ const webpackConfig = {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
-    }),
+      'process.env': {
+        NODE_ENV: `"${env}"`
+      }
+    })
+  ]
+};
+
+if (env === 'production') {
+  webpackConfig.plugins.push(
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -104,7 +110,7 @@ const webpackConfig = {
       sourceMap: config.build.productionSourceMap,
       parallel: true
     })
-  ]
-};
+  );
+}
 
 module.exports = webpackConfig;
