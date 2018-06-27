@@ -66,6 +66,7 @@ const webpackConfig = {
     contentBase: config.build.assetsRoot,
     compress: true,
     port: 8080,
+    https: true,
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
