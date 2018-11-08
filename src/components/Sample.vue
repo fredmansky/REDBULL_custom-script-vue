@@ -16,7 +16,8 @@
     data () {
       return {
         cn: 'fr-sample',
-        msg: 'I\'m a Sample Component'
+        msg: 'I\'m a Sample Component',
+        endpoint: null
       }
     },
     computed: {
@@ -24,9 +25,26 @@
         return this.modifiers.map(mod => this.cn + "--" + mod).join("  ");
       }
     },
-    methods: {},
+    methods: {      
+      // Get Data from Endpoint
+      getData(url) {
+        axios.get(url)
+          .then((response) => {
+            // handle success
+            console.log(response);
+          })
+          .catch((error) => {
+            // handle error
+            console.log(error);
+          });
+      },
+    },
     watch: {},
-    mounted() {},
+    mounted() {
+      if (this.endpoint) {
+        this.getData(this.endpoint);
+      }
+    },
     created() {},
     components: {},
   }
