@@ -60,7 +60,8 @@ const webpackConfig = {
     library: 'customScript',
     libraryTarget: 'amd',
     path: config.build.assetsRoot,
-    filename: process.env.NODE_ENV === 'production' ? '[name].[chunkhash].js' : 'bundle.js'
+    // filename: process.env.NODE_ENV === 'production' ? '[name].[chunkhash].js' : 'bundle.js'
+    filename: process.env.NODE_ENV === 'production' ? 'bundle.js' : 'bundle.js'
   },
   devServer: {
     contentBase: config.build.assetsRoot,
