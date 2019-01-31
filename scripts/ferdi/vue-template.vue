@@ -41,7 +41,6 @@
 <style scoped lang="scss">
   .fr-<%= moduleName.replace('-', '_') %> {
     $root: &;
-    @include make-vr();
     width: 100%;
   }
 

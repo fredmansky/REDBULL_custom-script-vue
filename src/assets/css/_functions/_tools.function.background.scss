@@ -1,0 +1,19 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Background
+ |--------------------------------------------------------------------------
+ */
+
+@function background($key) {
+  @if map-has-key($fr-backgrounds, $key) {
+    @return map-get($fr-backgrounds, $key);
+  }
+
+  @warn "Unknown '#{$key}' in #{map-keys($fr-backgrounds)}";
+  @return null;
+}
+
+// Shorthand Version
+@function bg($key) {
+  @return background($key);
+}

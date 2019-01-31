@@ -4,7 +4,7 @@ module.exports = {
     },
     files: {
         vue: {
-            name: 'vue',
+            name: '',
             postfix: '',
             extension: 'vue',
             description: 'ferdi should create Vue File'

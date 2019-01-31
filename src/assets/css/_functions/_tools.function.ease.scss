@@ -1,0 +1,19 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Easings
+ |--------------------------------------------------------------------------
+ */
+
+@function ease($key) {
+  @if map-has-key($fr-easings, $key) {
+    @return map-get($fr-easings, $key);
+  }
+
+  @warn "Unknown '#{$key}' in #{map-keys($fr-easings)}";
+  @return null;
+}
+
+// Shorthand Version
+@function e($key) {
+  @return ease($key);
+}

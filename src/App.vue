@@ -1,18 +1,87 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+  <div id="app" :class="cn">
+    <Fredmansky />
+
+    <template v-if="contentIsReady">
+      Content Here
+    </template>
+
+    <div v-else>
+      <Loading/>
+    </div>
+
+    <Grid v-if="$myConfig.showGrid" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+  import {mapState, mapMutations} from 'vuex';
+  import axios from 'axios';
+  import Fredmansky from './components/Fredmansky'
+  import Loading from './components/Loading'
+  import Grid from './components/Grid'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      cn: 'fr-component',
+      showContent: false,
+      timer: null,
+      endpoints: {
+        sample: null
+      },
+    }
+  },
+  props: {
+    options: {
+      type: [Object, String, Array],
+      default: () => ({})
+    }
+  },
+  computed: {
+    ...mapState([
+      'endpointData'
+    ]),
+    contentIsReady() {
+      return this.showContent;
+    }
+  },
+  methods: {
+    ...mapMutations([
+      'setEndpointData',
+    ]),
+
+    getApiContent(endpoint, storeTarget) {
+      axios.get(endpoint)
+        .then((response) => {
+          this.$store.commit(storeTarget, response.data);
+
+          this.showContent = true;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      // Refresh Data
+      this.timer = setTimeout(() => {
+        clearTimeout(this.timer);
+        this.getApiContent(this.endpoints.sample, 'setEndpointData');
+      }, 10000);
+    },
+  },
   components: {
-    HelloWorld
-  }
+    Fredmansky,
+    Grid,
+    Loading
+  },
+  mounted() {
+    console.log('FR Component mounted');
+    this.getApiContent(this.endpoints.sample, 'setEndpointData');
+  },
+  beforeDestroy() {
+    clearTimeout(this.timer);
+  },
 }
 </script>
 

@@ -1,0 +1,42 @@
+// Very Important
+.fr-component {
+  box-sizing: border-box;
+
+  * {
+    &,
+    &:before,
+    &:after {
+      box-sizing: inherit;
+    }
+  }
+}
+
+
+// Settings
+@import "_settings/settings.global";
+@import "_settings/settings.backgrounds";
+@import "_settings/settings.borderradius";
+@import "_settings/settings.borders";
+@import "_settings/settings.borderradius";
+@import "_settings/settings.boxshadows";
+@import "_settings/settings.breakpoints";
+@import "_settings/settings.colors";
+@import "_settings/settings.easings";
+
+// Functions
+@import "_functions/tools.function.background";
+@import "_functions/tools.function.borderradius";
+@import "_functions/tools.function.border";
+@import "_functions/tools.function.boxshadow";
+@import "_functions/tools.function.color";
+@import "_functions/tools.function.ease";
+@import "_functions/tools.function.space";
+
+// Mixins
+@import "_mixins/tools.mixin.center";
+@import "_mixins/tools.mixin.filter";
+@import "_mixins/tools.mixin.fluid";
+@import "_mixins/tools.mixin.visually-hidden";
+
+// Vendors
+@import "_vendors/flickity";

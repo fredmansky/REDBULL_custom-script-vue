@@ -1,0 +1,13 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Box Shadow
+ |--------------------------------------------------------------------------
+ */
+
+$border-0:            0px none;
+$border-solid-black:   solid 1px c('black');
+
+$fr-borders: (
+  'none':             $border-0,
+  'solid-black':      $border-solid-black,
+);

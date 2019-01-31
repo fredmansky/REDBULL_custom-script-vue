@@ -1,0 +1,13 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Box Shadow
+ |--------------------------------------------------------------------------
+ */
+
+$background-0:            transparent;
+$background-white:        c('white');
+
+$fr-backgrounds: (
+  'none':       $background-0,
+  'white':      $background-white,
+);
