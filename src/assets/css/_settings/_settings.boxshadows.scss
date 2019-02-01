@@ -5,15 +5,11 @@
  */
 
 $box-shadow-level-0:        none;
-$box-shadow-desktop:        0 20px 40px 0 rgba(3, 12, 18, 0.15);
-$box-shadow-desktop-hover:  0 20px 40px 0 rgba(3, 12, 18, 0.25);
-$box-shadow-mobile:         0 10px 30px 0 rgba(3, 12, 18, 0.15);
-$box-shadow-mobile-tap:     0 10px 30px 0 rgba(3, 12, 18, 0.25);
+$box-shadow-level-1:        0 8px 16px 0 rgba(0, 0, 0, 0.12);
+$box-shadow-level-2:        0 16px 32px 0 rgba(0, 0, 0, 0.12);
 
 $fr-boxshadows: (
-  'none':           $box-shadow-level-0,
-  'desktop':        $box-shadow-desktop,
-  'desktop-hover':  $box-shadow-desktop-hover,
-  'mobile':         $box-shadow-mobile,
-  'mobile-tap':     $box-shadow-mobile-tap,
+  'none':     $box-shadow-level-0,
+  '1':        $box-shadow-level-1,
+  '2':        $box-shadow-level-2,
 );

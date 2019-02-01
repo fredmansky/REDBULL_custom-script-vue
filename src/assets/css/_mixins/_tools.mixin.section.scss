@@ -1,0 +1,51 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Section
+ |--------------------------------------------------------------------------
+ */
+
+@mixin make-section($behaviour: 'fixed', $padding: true, $testing: false) {
+  @include center();
+  max-width: if($behaviour == 'fixed', $fr-maxWidth, none);
+
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include media('>=t') {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  @include media('>=sd') {
+    padding-left: 76px;
+    padding-right: 76px;
+  }
+
+  @if $padding == false {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include media('>=t') {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include media('>=sd') {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @if $testing == true {
+    padding-top: s(4);
+    padding-bottom: s(4);
+    position: relative;
+    border-radius: 5px;
+    background-color: c('gray','silver');
+  }
+}
+
+// Shorthand Version
+@mixin section($args...) {
+  @include make-section($args...);
+}

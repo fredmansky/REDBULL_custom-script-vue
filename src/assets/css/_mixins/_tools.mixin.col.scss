@@ -1,0 +1,26 @@
+/*
+ |--------------------------------------------------------------------------
+ |  col
+ |--------------------------------------------------------------------------
+ */
+
+@mixin make-col($cols: 1, $context: 1, $margin: true, $testing: false) {
+  $width: $cols / $context * 100%;
+  flex: 0 1 $width;
+  max-width: $width;
+  min-height: 1px;
+
+  @if $testing == true {
+    padding-top: s(4);
+    padding-bottom: s(4);
+    position: relative;
+    border-radius: 5px;
+    background-color: c('white');
+    box-shadow: 0 0 0 1px c('gray','light');
+  }
+}
+
+// Shorthand Version
+@mixin col($args...) {
+  @include make-col($args...);
+}

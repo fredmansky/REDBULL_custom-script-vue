@@ -11,6 +11,7 @@
     </div>
 
     <Grid v-if="$myConfig.showGrid" />
+    <GridExample v-if="$myConfig.showGrid" />
   </div>
 </template>
 
@@ -20,6 +21,7 @@
   import Fredmansky from './components/Fredmansky'
   import Loading from './components/Loading'
   import Grid from './components/Grid'
+  import GridExample from "./components/GridExample";
 
 export default {
   name: 'App',
@@ -71,6 +73,7 @@ export default {
     },
   },
   components: {
+    GridExample,
     Fredmansky,
     Grid,
     Loading

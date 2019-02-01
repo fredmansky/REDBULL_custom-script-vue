@@ -1,0 +1,13 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Font Sizes
+ |--------------------------------------------------------------------------
+ */
+
+$fontsize-0:            0px;
+$fontsize-solid-black:   solid 1px c('black');
+
+$fr-fontsizes: (
+  'base':             $fontsize-0,
+  'solid-black':      $fontsize-solid-black,
+);

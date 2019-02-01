@@ -5,9 +5,11 @@
  */
 
 $background-0:            transparent;
-$background-white:        c('white');
+$background-gradient:     linear-gradient(-180deg, rgba(0,15,30,0.00) 0%, rgba(0,15,30,0.37) 44%, rgba(0,15,30,0.67) 100%);
+$background-overlay:      rgba(0,15,30,0.40);
 
 $fr-backgrounds: (
   'none':       $background-0,
-  'white':      $background-white,
+  'gradient':   $background-gradient,
+  'overlay':   $background-overlay,
 );

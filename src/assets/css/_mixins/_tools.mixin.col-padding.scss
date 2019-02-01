@@ -1,0 +1,78 @@
+/*
+ |--------------------------------------------------------------------------
+ |  col
+ |--------------------------------------------------------------------------
+ */
+
+@mixin make-col-padding($padding: true, $testing: true) {
+  padding-left: 6px;
+  padding-right: 6px;
+
+  @include media('>=t') {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  @include media('>=sd') {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  @if $testing == true and $padding == true {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    &::before {
+      border-right: 1px solid rgba(c('gray','light'), 1);
+      left: 6px;
+
+      @include media('>=t') {
+        left: 10px;
+      }
+
+      @include media('>=sd') {
+        left: 12px;
+      }
+    }
+
+    &::after {
+      border-right: 1px solid rgba(c('gray','light'), 1);
+      right: 6px;
+
+      @include media('>=t') {
+        right: 10px;
+      }
+
+      @include media('>=sd') {
+        right: 12px;
+      }
+    }
+  }
+
+  @if $padding == false {
+    padding-left: 0;
+    padding-right: 0;
+
+    @include media('>=t') {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include media('>=sd') {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// Shorthand Version
+@mixin col-padding($args...) {
+  @include make-col-padding($args...);
+}

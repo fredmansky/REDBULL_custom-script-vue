@@ -4,7 +4,7 @@
 <template>
   <div :class="rootClass">
     <div :class="`${cn}__holder`">
-      <template v-for="i in 12">
+      <template v-for="i in 24">
         <div :class="`${cn}__col`" :key="i"/>
       </template>
     </div>
@@ -50,6 +50,7 @@
   .fr-Grid {
     $root: &;
     width: 100%;
+    pointer-events: none;
 
     &__holder {
       position: fixed !important;
@@ -60,7 +61,6 @@
       height: 100vh;
       border-left: 1px dotted rgba(red, 0.2);
       border-right: 1px dotted rgba(red, 0.2);
-      pointer-events: none;
       width: 100%;
       max-width: 1350px;
       display: flex;
@@ -139,6 +139,14 @@
         display: none;
 
         @include media('>=sd') {
+          display: block;
+        }
+      }
+
+      &:nth-child(12n) ~ .fr-Grid__col {
+        display: none;
+
+        @include media('>=ld') {
           display: block;
         }
       }

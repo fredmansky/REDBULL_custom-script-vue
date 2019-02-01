@@ -1,0 +1,19 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Font Size
+ |--------------------------------------------------------------------------
+ */
+
+@function font-size($key) {
+  @if map-has-key($fr-borders, $key) {
+    @return map-get($fr-borders, $key);
+  }
+
+  @warn "Unknown '#{$key}' in #{map-keys($fr-borders)}";
+  @return null;
+}
+
+// Shorthand Version
+@function fs($key) {
+  @return font-size($key);
+}
