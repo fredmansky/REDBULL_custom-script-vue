@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="cn">
-    <Fredmansky />
+    <Fredmansky/>
 
     <template v-if="contentIsReady">
       Content Here
@@ -10,8 +10,8 @@
       <Loading/>
     </div>
 
-    <Grid v-if="$myConfig.showGrid" />
-    <GridExample v-if="$myConfig.showGrid" />
+    <Grid v-if="$myConfig.showGrid"/>
+    <GridExample v-if="$myConfig.showGrid"/>
   </div>
 </template>
 
@@ -23,78 +23,80 @@
   import Grid from './components/Grid'
   import GridExample from "./components/GridExample";
 
-export default {
-  name: 'App',
-  data() {
-    return {
-      cn: 'fr-component',
-      showContent: false,
-      timer: null,
-      endpoints: {
-        sample: null
-      },
-    }
-  },
-  props: {
-    options: {
-      type: [Object, String, Array],
-      default: () => ({})
-    }
-  },
-  computed: {
-    ...mapState([
-      'endpointData'
-    ]),
-    contentIsReady() {
-      return this.showContent;
-    }
-  },
-  methods: {
-    ...mapMutations([
-      'setEndpointData',
-    ]),
-
-    getApiContent(endpoint, storeTarget) {
-      axios.get(endpoint)
-        .then((response) => {
-          this.$store.commit(storeTarget, response.data);
-
-          this.showContent = true;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-      // Refresh Data
-      this.timer = setTimeout(() => {
-        clearTimeout(this.timer);
-        this.getApiContent(this.endpoints.sample, 'setEndpointData');
-      }, 10000);
+  export default {
+    name: 'App',
+    data() {
+      return {
+        cn: 'fr-component',
+        showContent: false,
+        timer: null,
+        endpoints: {
+          sample: null
+        },
+      }
     },
-  },
-  components: {
-    GridExample,
-    Fredmansky,
-    Grid,
-    Loading
-  },
-  mounted() {
-    console.log('FR Component mounted');
-    this.getApiContent(this.endpoints.sample, 'setEndpointData');
-  },
-  beforeDestroy() {
-    clearTimeout(this.timer);
-  },
-}
+    props: {
+      options: {
+        type: [Object, String, Array],
+        default: () => ({})
+      }
+    },
+    computed: {
+      ...mapState([
+        'endpointData'
+      ]),
+      contentIsReady() {
+        return this.showContent;
+      }
+    },
+    methods: {
+      ...mapMutations([
+        'setEndpointData',
+      ]),
+
+      getApiContent(endpoint, storeTarget) {
+        axios.get(endpoint)
+          .then((response) => {
+            this.$store.commit(storeTarget, response.data);
+
+            this.showContent = true;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        // Refresh Data
+        this.timer = setTimeout(() => {
+          clearTimeout(this.timer);
+          this.getApiContent(this.endpoints.sample, 'setEndpointData');
+        }, 10000);
+      },
+    },
+    components: {
+      GridExample,
+      Fredmansky,
+      Grid,
+      Loading
+    },
+    mounted() {
+      console.log('FR Component mounted');
+      this.getApiContent(this.endpoints.sample, 'setEndpointData');
+    },
+    beforeDestroy() {
+      clearTimeout(this.timer);
+    },
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="scss">
+  @import "./assets/css/framework.scss";
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: c('gray', 'dark');
+    margin-top: 60px;
+  }
 </style>

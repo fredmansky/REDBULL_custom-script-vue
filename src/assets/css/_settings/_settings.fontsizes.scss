@@ -4,10 +4,23 @@
  |--------------------------------------------------------------------------
  */
 
-$fontsize-0:            0px;
-$fontsize-solid-black:   solid 1px c('black');
 
-$fr-fontsizes: (
-  'base':             $fontsize-0,
-  'solid-black':      $fontsize-solid-black,
+// Dependencies
+@import '~modularscale-sass/stylesheets/modularscale';
+
+// Settings
+$fr-baseFontSizePx: 16px;
+$fr-baseFontSizeMaxPx: 20px;
+$fr-baseLineHeight: 1.5;
+
+// Modular Scale Settings
+$modularscale: (
+  base: $fr-baseFontSizePx,
+  ratio: $major-third,
+  $fr-minWidth: (
+    base: $fr-baseFontSizePx,
+  ),
+  $fr-maxWidth:  (
+    base: $fr-baseFontSizeMaxPx,
+  )
 );

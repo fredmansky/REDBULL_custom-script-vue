@@ -22,6 +22,7 @@
 @import "_settings/settings.breakpoints";
 @import "_settings/settings.colors";
 @import "_settings/settings.easings";
+@import "_settings/settings.fontsizes";
 
 // Functions
 @import "_functions/tools.function.background";
@@ -38,9 +39,13 @@
 @import "_mixins/tools.mixin.fluid";
 @import "_mixins/tools.mixin.col";
 @import "_mixins/tools.mixin.col-padding";
+@import "_mixins/tools.mixin.offset";
 @import "_mixins/tools.mixin.row";
 @import "_mixins/tools.mixin.section";
 @import "_mixins/tools.mixin.visually-hidden";
+
+// Elements
+@import "_elements/elements.headings";
 
 // Vendors
 @import "_vendors/flickity";

@@ -1,0 +1,37 @@
+/*
+ |--------------------------------------------------------------------------
+ |  Offset
+ |--------------------------------------------------------------------------
+ */
+
+@mixin make-offset($cols: 1, $context: 1, $testing: false) {
+  $offset: 0;
+  // Rounds to integer Numbers
+  @if $cols != auto {
+    $cols: ceil($cols);
+
+    // Calculate the Context
+    $offset: $cols  / $context * 100%;
+  }
+
+  // If Cols auto set it to 0
+  @if $cols == auto {
+    $offset: auto;
+    $cols: 0;
+  }
+  margin-left: $offset;
+
+  @if $testing == true {
+    padding-top: s(4);
+    padding-bottom: s(4);
+    position: relative;
+    border-radius: 5px;
+    background-color: c('white');
+    box-shadow: 0 0 0 1px c('gray','light');
+  }
+}
+
+// Shorthand Version
+@mixin offset($args...) {
+  @include make-offset($args...);
+}
