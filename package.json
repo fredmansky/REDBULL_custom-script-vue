@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.conf.js",
-    "build": "NODE_ENV=production node build/build.js"
+    "build": "NODE_ENV=production node build/build.js",
+    "deploy": "yarn build && cat ./rsync_pass | pbcopy && chmod +x ./rsync.sh && ./rsync.sh && '' | pbcopy"
   },
   "dependencies": {
     "vue": "^2.5.2",
