@@ -4,7 +4,6 @@
 <template>
   <div :class="rootClass">
     <component :is="svg" />
-    {{ icon }}
   </div>
 </template>
 
@@ -35,19 +34,15 @@
         return [this.cn, modifiers];
       }
     },
-    methods: {},
-    watch: {},
-    mounted() {},
     created() {
-      console.log('YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
-      console.log(this.svg)
-      const loaded = import(`../assets/images/icons/${
+      const svg = () => import(`../assets/images/icons/${
         this.icon
         }.svg`);
-      this.svg = loaded.default;
-      console.log('NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+
+      svg.then((default) => {
+        this.svg = default;
+      })
     },
-    components: {},
   }
 </script>
 
