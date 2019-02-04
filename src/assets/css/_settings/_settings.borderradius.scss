@@ -6,10 +6,9 @@
 
 $border-radius-level-0: 0px;
 $border-radius-level-1: 2px;
-$border-radius-level-2: 5px;
-$border-radius-level-3: 10px;
-$border-radius-level-4: 25px;
-$border-radius-level-5: 50px;
+$border-radius-level-2: 4px;
+$border-radius-level-3: 6px;
+$border-radius-level-4: 8px;
 
 $fr-borderradius: (
   'none':   $border-radius-level-0,
@@ -17,5 +16,4 @@ $fr-borderradius: (
   '2':      $border-radius-level-2,
   '3':      $border-radius-level-3,
   '4':      $border-radius-level-4,
-  '5':      $border-radius-level-5,
 );
