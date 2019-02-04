@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="cn">
     <Fredmansky/>
+    <Icon :icon="`arrow-up`"/>
 
     <template v-if="contentIsReady">
       Content Here
@@ -22,6 +23,7 @@
   import Loading from './components/Loading'
   import Grid from './components/Grid'
   import GridExample from "./components/GridExample";
+  import Icon from "./components/Icon";
 
   export default {
     name: 'App',
@@ -76,7 +78,8 @@
       GridExample,
       Fredmansky,
       Grid,
-      Loading
+      Loading,
+      Icon
     },
     mounted() {
       console.log('FR Component mounted');
