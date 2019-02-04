@@ -4,7 +4,7 @@
  |--------------------------------------------------------------------------
  */
 
-@mixin make-col-padding($padding: true, $testing: true) {
+@mixin make-col-padding($padding: true, $testing: false) {
   padding-left: 6px;
   padding-right: 6px;
 

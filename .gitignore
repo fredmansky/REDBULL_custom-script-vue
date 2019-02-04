@@ -13,3 +13,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+rsync_pass

@@ -11,7 +11,6 @@
   }
 }
 
-
 // Settings
 @import "_settings/settings.global";
 @import "_settings/settings.backgrounds";
@@ -43,6 +42,11 @@
 @import "_mixins/tools.mixin.row";
 @import "_mixins/tools.mixin.section";
 @import "_mixins/tools.mixin.visually-hidden";
+
+
+// Classes
+@import "classes";
+
 
 // Elements
 @import "_elements/elements.headings";
