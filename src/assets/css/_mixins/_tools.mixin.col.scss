@@ -8,7 +8,6 @@
   $width: $cols / $context * 100%;
   flex: 0 1 $width;
   max-width: $width;
-  min-height: 1px;
 
   @if $testing == true {
     padding-top: s(4);
@@ -26,3 +25,4 @@
 @mixin col($args...) {
   @include make-col($args...);
 }
+

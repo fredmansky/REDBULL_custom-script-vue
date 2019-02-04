@@ -1,7 +1,23 @@
 <template>
   <div id="app" :class="cn">
     <Fredmansky/>
-    <Icon :icon="`arrow-up`"/>
+
+    <div class="fr-section">
+      <div class="fr-row  fr-items-x-center">
+        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2">
+          <Icon :icon="`person-profile`"
+                :background="`yellow`"
+                :radius="`100%`"
+                :padding="`10px`"
+                :size="3"/>
+        </div>
+      </div>
+      <div class="fr-row  fr-items-x-center">
+        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2">
+          <Flag :flag="`de`"/>
+        </div>
+      </div>
+    </div>
 
     <template v-if="contentIsReady">
       Content Here
@@ -24,6 +40,7 @@
   import Grid from './components/Grid'
   import GridExample from "./components/GridExample";
   import Icon from "./components/Icon";
+  import Flag from "./components/Flag";
 
   export default {
     name: 'App',
@@ -79,7 +96,8 @@
       Fredmansky,
       Grid,
       Loading,
-      Icon
+      Icon,
+      Flag
     },
     mounted() {
       console.log('FR Component mounted');

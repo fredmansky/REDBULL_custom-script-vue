@@ -6,11 +6,9 @@
        :style="`
          width: ${width * size}px;
          height: ${height * size}px;
-         padding: ${padding};
-         background-color: ${background};
-         border-radius: ${radius};
        `">
-    <img :src="require(`../assets/images/icons/${color}/${icon}.svg`)" :alt="icon">
+    <img :src="require(`../assets/images/flags/${transformFlagName(flag)}.svg`)"
+         :alt="`${transformFlagName(flag)}`">
   </div>
 </template>
 
@@ -22,25 +20,13 @@
         type: Array,
         default: () => []
       },
-      icon: {
+      flag: {
         type: String,
         required: true
       },
       color: {
         type: String,
         default: 'black'
-      },
-      background: {
-        type: String,
-        default: 'transparent'
-      },
-      radius: {
-        type: String,
-        default: '0px'
-      },
-      padding: {
-        type: String,
-        default: '0px'
       },
       size: {
         type: Number,
@@ -50,8 +36,9 @@
     data() {
       return {
         cn: 'fr-Icon',
-        width: 24,
-        height: 24
+        svg: null,
+        width: 21,
+        height: 15
       };
     },
     computed: {
@@ -60,8 +47,13 @@
           .map(mod => this.cn + "--" + mod)
           .join("  ");
         return [this.cn, modifiers];
-      }
+      },
     },
+    methods: {
+      transformFlagName(el) {
+        return el.toUpperCase()
+      }
+    }
   }
 </script>
 

@@ -69,7 +69,7 @@
     margin-left: -13px;
     background-repeat: no-repeat;
     background-position: center;
-    border: border('0');
+    border: border('solid-black');
     outline: none;
     background-size: auto;
   }
@@ -79,7 +79,7 @@
     @include fluid(s(5), s(7), left);
     background-repeat: no-repeat;
     background-position: center;
-    border: border('0');
+    border: border('solid-black');
     outline: none;
     background-size: auto;
   }

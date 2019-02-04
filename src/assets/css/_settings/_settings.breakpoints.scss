@@ -1,8 +1,18 @@
 @import '~include-media/dist/include-media';
 
-$breakpoints: (
-  m: 320px,
-  t: 650px,
-  sd: 1000px,
-  ld: 1500px
-)
+$fr-grid-settings: (
+  m: (from: 320px, cols: 6),
+  t: (from: 650px, cols: 8),
+  sd: (from: 1000px, cols: 12),
+  ld: (from: 1500px, cols: 24)
+);
+
+$fr-breakpoints: () !default;
+
+@each $key, $values in $fr-grid-settings {
+  $_breakpoint: map-get($values, from);
+
+  $fr-breakpoints: map_merge($fr-breakpoints, ($key: $_breakpoint));
+}
+
+$breakpoints: $fr-breakpoints;
