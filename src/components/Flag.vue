@@ -24,10 +24,6 @@
         type: String,
         required: true
       },
-      color: {
-        type: String,
-        default: 'black'
-      },
       size: {
         type: Number,
         default: 1

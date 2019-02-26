@@ -7,6 +7,19 @@
   @include section('fluid');
 }
 
+// Display
+.fr-dp-flex {
+  display: flex;
+}
+
+.fr-dp-block {
+  display: block;
+}
+
+.fr-dp-iblock {
+  display: inline-block;
+}
+
 // Create Classes
 .fr-row {
   @include row();
@@ -70,6 +83,25 @@
   @include col-padding(false);
 }
 
+// Alignment
+.fr-ta-center {
+  text-align: center;
+}
+
+.fr-ta-left {
+  text-align: left;
+}
+
+.fr-ta-right {
+  text-align: right;
+}
+
+.fr-ta-justify {
+  text-align: justify;
+}
+
+
+// Grid
 @each $key, $item in $fr-grid-settings {
   $from: map-get($item, from);
   $cols: map-get($item, cols);
@@ -77,6 +109,24 @@
   @media screen and (min-width: #{$from}) {
     .fr-col-offset-#{$key}-0 {
       @include offset(0, $cols, false);
+    }
+
+    @for $i from 1 through 32 {
+      .fr-mt-#{$key}-#{$i} {
+        margin-top: s($i);
+      }
+
+      .fr-mb-#{$key}-#{$i} {
+        margin-top: s($i);
+      }
+
+      .fr-mr-#{$key}-#{$i} {
+        margin-top: s($i);
+      }
+
+      .fr-ml-#{$key}-#{$i} {
+        margin-top: s($i);
+      }
     }
 
     @for $i from 1 through $cols {

@@ -1,26 +1,37 @@
 <template>
   <div id="app" :class="cn">
-    <Fredmansky/>
-
     <div class="fr-section">
       <div class="fr-row  fr-items-x-center">
-        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2">
+        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2  fr-dp-flex  fr-items-x-center">
+          <Fredmansky/>
+        </div>
+      </div>
+
+      <div class="fr-row  fr-items-x-center">
+        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2  fr-mt-m-4  fr-dp-flex  fr-items-x-center">
           <Icon :icon="`person-profile`"
-                :background="`yellow`"
+                :background="`#22346F`"
                 :radius="`100%`"
+                :color="`white`"
                 :padding="`10px`"
-                :size="3"/>
+                :size="3" />
         </div>
       </div>
       <div class="fr-row  fr-items-x-center">
-        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2">
-          <Flag :flag="`de`"/>
+        <div class="fr-col-m-2  fr-col-t-2  fr-col-sd-2  fr-col-ld-2  fr-mt-m-4  fr-dp-flex  fr-items-x-center">
+          <Flag :flag="`at`" :size="1" />
         </div>
       </div>
     </div>
 
     <template v-if="contentIsReady">
-      Content Here
+      <div class="fr-section">
+        <div class="fr-row  fr-items-x-center">
+          <div class="fr-col-m-6 fr-mt-m-4  fr-ta-center">
+            {{ data.sample.data[0].id }}
+          </div>
+        </div>
+      </div>
     </template>
 
     <div v-else>
@@ -50,8 +61,11 @@
         showContent: false,
         timer: null,
         endpoints: {
-          sample: null
+          sample: 'https://cors-anywhere.herokuapp.com/https://redbull.com/v3/api/composition/v3/query?filter[relationships.tags]=rrn:content:tags:263d7477-b82e-4a6a-97ed-d7158063aa20&filter[type]=event-profiles&spaces=redbull_com,rbtv,redbullmusic&page[limit]=1'
         },
+        data: {
+          sample: null
+        }
       }
     },
     props: {
@@ -76,8 +90,8 @@
       getApiContent(endpoint, storeTarget) {
         axios.get(endpoint)
           .then((response) => {
-            this.$store.commit(storeTarget, response.data);
-
+            // this.$store.commit(storeTarget, response.data);
+            this.data.sample = response.data;
             this.showContent = true;
           })
           .catch((error) => {
