@@ -61,7 +61,7 @@
         showContent: false,
         timer: null,
         endpoints: {
-          sample: 'https://cors-anywhere.herokuapp.com/https://redbull.com/v3/api/composition/v3/query?filter[relationships.tags]=rrn:content:tags:263d7477-b82e-4a6a-97ed-d7158063aa20&filter[type]=event-profiles&spaces=redbull_com,rbtv,redbullmusic&page[limit]=1'
+          sample: 'sample'
         },
         data: {
           sample: null
