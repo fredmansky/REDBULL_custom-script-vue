@@ -1,46 +1,31 @@
 /*
  |--------------------------------------------------------------------------
- |  col
+ |  Space
  |--------------------------------------------------------------------------
  */
 
-@mixin make-spacing($factor: 1) {
+@mixin make-space($properties: null, $factor: 1) {
   $factor: $factor * 2;
-  $space: 6px;
 
-  padding-left: $space;
-  padding-right: $space;
+  @if ($properties != null) {
+    @each $property in $properties {
+      $space: 6px * $factor;
+      #{$property}: $space;
 
-  @include media('>=t') {
-    $space: 10px;
-    padding-left: $space;
-    padding-right: $space;
-  }
+      @include media('>=t') {
+        $space: 10px * $factor;
+        #{$property}: $space;
+      }
 
-  @include media('>=sd') {
-    $space: 12px;
-    padding-left: $space;
-    padding-right: $space;
-  }
-
-  @if $factor == 0 {
-    $space: 0;
-    padding-left: $space;
-    padding-right: $space;
-
-    @include media('>=t') {
-      padding-left: $space;
-      padding-right: $space;
-    }
-
-    @include media('>=sd') {
-      padding-left: $space;
-      padding-right: $space;
+      @include media('>=sd') {
+        $space: 12px * $factor;
+        #{$property}: $space;
+      }
     }
   }
 }
 
 // Shorthand Version
-@mixin spacing($args...) {
-  @include make-spacing($args...);
+@mixin space($args...) {
+  @include make-space($args...);
 }
