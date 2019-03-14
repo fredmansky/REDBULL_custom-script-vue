@@ -4,32 +4,36 @@
  |--------------------------------------------------------------------------
  */
 
-@mixin make-col-padding($padding: true) {
-  padding-left: 6px;
-  padding-right: 6px;
+@mixin make-col-padding($factor: 1) {
+  $space: 6px;
+  padding-left: $space;
+  padding-right: $space;
 
   @include media('>=t') {
-    padding-left: 10px;
-    padding-right: 10px;
+    $space: 10px;
+    padding-left: $space;
+    padding-right: $space;
   }
 
   @include media('>=sd') {
-    padding-left: 12px;
-    padding-right: 12px;
+    $space: 12px;
+    padding-left: $space;
+    padding-right: $space;
   }
 
-  @if $padding == false {
-    padding-left: 0;
-    padding-right: 0;
+  @if $factor == 0 {
+    $space: 0;
+    padding-left: $space;
+    padding-right: $space;
 
     @include media('>=t') {
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: $space;
+      padding-right: $space;
     }
 
     @include media('>=sd') {
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: $space;
+      padding-right: $space;
     }
   }
 }
