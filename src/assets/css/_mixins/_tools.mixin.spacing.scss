@@ -1,0 +1,46 @@
+/*
+ |--------------------------------------------------------------------------
+ |  col
+ |--------------------------------------------------------------------------
+ */
+
+@mixin make-spacing($factor: 1) {
+  $factor: $factor * 2;
+  $space: 6px;
+
+  padding-left: $space;
+  padding-right: $space;
+
+  @include media('>=t') {
+    $space: 10px;
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  @include media('>=sd') {
+    $space: 12px;
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  @if $factor == 0 {
+    $space: 0;
+    padding-left: $space;
+    padding-right: $space;
+
+    @include media('>=t') {
+      padding-left: $space;
+      padding-right: $space;
+    }
+
+    @include media('>=sd') {
+      padding-left: $space;
+      padding-right: $space;
+    }
+  }
+}
+
+// Shorthand Version
+@mixin spacing($args...) {
+  @include make-spacing($args...);
+}
