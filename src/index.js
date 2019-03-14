@@ -12,8 +12,11 @@ function start(options) {
 
   const vm = new Vue({
     el: options.el,
+    data: {
+      options
+    },
     components: { App },
-    template: '<App/>'
+    template: "<App :options='options'/>"
   });
   return Promise.resolve({
     stop: () => vm.$destroy()
