@@ -4,21 +4,65 @@
  |--------------------------------------------------------------------------
  */
 
-@mixin make-col-padding($factor: 1) {
-  $space: 6px;
+@mixin make-col-padding($factor: 1, $testing: false) {
+  $space: 6px * $factor;
   padding-left: $space;
   padding-right: $space;
 
   @include media('>=t') {
-    $space: 10px;
+    $space: 10px * $factor;
     padding-left: $space;
     padding-right: $space;
   }
 
   @include media('>=sd') {
-    $space: 12px;
+    $space: 12px * $factor;
     padding-left: $space;
     padding-right: $space;
+  }
+
+  @if $testing == true and $factor > 0 {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    &::before {
+      $space: 6px * $factor;
+      border-right: 1px solid rgba(c('gray','light'), 1);
+      left: $space;
+
+      @include media('>=t') {
+        $space: 10px * $factor;
+        left: $space;
+      }
+
+      @include media('>=sd') {
+        $space: 12px * $factor;
+        left: $space;
+      }
+    }
+
+    &::after {
+      $space: 6px * $factor;
+      border-right: 1px solid rgba(c('gray','light'), 1);
+      right: $space;
+
+      @include media('>=t') {
+        $space: 10px * $factor;
+        right: $space;
+      }
+
+      @include media('>=sd') {
+        $space: 12px * $factor;
+        right: $space;
+      }
+    }
   }
 
   @if $factor == 0 {
