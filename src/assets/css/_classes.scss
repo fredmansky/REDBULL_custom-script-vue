@@ -80,7 +80,7 @@
 }
 
 [class^='fr-col'].no-padding {
-  @include col-padding(false);
+  @include col-padding(0);
 }
 
 // Alignment
